@@ -12,6 +12,6 @@ To run the application using command prompt:
 - open new terminal or command prompt window and go to ShopIt\ShopItBackend
 - type 'dotnet run'
 - open another terminal and go to ShopIt\ShopIt 
-- type 'ng server'
+- type 'ng serve'
 - from browser access http://localhost:4200/ 
 - the backend API runs on https://localhost:7170/ 
