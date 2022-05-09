@@ -4,6 +4,6 @@ Online Shopping Cart Application with .Net Core version 6.0 and Angular 13.
 
 Backend is implemented in CQRS with Mediator Design Pattern, and uses Swagger for API testing.
 
-Backend test frameworks are NUnit, Moq and Shoudly. Frontend is Karma.
+Backend test frameworks are NUnit, Moq and Shoudly, Frontend is Karma.
 
 The project is created with Visual Studio 2022.
