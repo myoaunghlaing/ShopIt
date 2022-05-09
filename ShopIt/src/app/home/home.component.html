@@ -1,0 +1,11 @@
+<div class="row item-block" *ngFor="let item of items">
+  <div class="col-md-2"><img src="{{item.imageUrl}}" alt="item image" class="item-img" /></div>
+  <div class="col-md-6">
+    <div class="item-title">{{ item.title }}</div>
+    <div>{{ item.description }}</div>
+  </div>
+  <div class="col-md-4">
+    <div>Price: {{item.currencyCurrent}} {{item.sellPrice | number : '1.2-2'}}</div>
+    <button type="button" class="btn btn-warning btn-buy-now" (click)="addToCart(item.id)">Add to basket</button>
+  </div>
+</div>

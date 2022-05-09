@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" class="col-md-1">Item</th>
+          <th scope="col" class="col-md-6">Title</th>
+          <th scope="col" class="col-md-3">Count</th>
+          <th scope="col" class="col-md-2">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{ item.title }}</td>
+          <td><input type="number" min="0" step="1" name="count_{{i}}" value={{item.count}} #itemcount /><button class="btn btn-outline-secondary btn-update" (click)="updateCount(itemcount,item.id)">Update</button></td>
+          <td>{{currentCurrency}} {{ item.count * item.sellPrice | number : '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="total-text">Shipping</td>
+          <td>{{currentCurrency}} {{ shippingCost | number : '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="total-text">Total</td>
+          <td>{{currentCurrency}} {{ totalCost | number : '1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="orderForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" formControlName="address" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <select formControlName="country" class="form-select" (change)="changeCountry($event)">
+          <option  [value]="country.currency" *ngFor="let country of countryRates">{{country.countryName}}</option>
+        </select>
+      </div>
+      <div class="form-group">        
+          <button class="btn btn-primary" type="submit" [disabled]="!orderForm.valid">Place Order</button>
+          <button class="btn btn-secondary btn-back-home" (click)="goHome()">Continue Shopping</button>
+      </div>
+    </form>    
+  </div>
+</div>
